@@ -14,6 +14,9 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
+import injectTapEventPlugin from "react-tap-event-plugin";
+import getMuiTheme from "material-ui/styles/getMuiTheme";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
 import App from "./containers/App";
 import fetchData from "./util/fetchData";
@@ -22,6 +25,9 @@ import config from "./config";
 
 const container = document.getElementById("app");
 const sagaMiddleware = createSagaMiddleware();
+
+// Needed for onTouchTap
+injectTapEventPlugin();
 
 fetchData(config.serviceUrl, "hackers").then(hackers => {
     const store = createStore(
@@ -47,7 +53,9 @@ fetchData(config.serviceUrl, "hackers").then(hackers => {
 function render(RootElement, store) {
     ReactDOM.render(
         <Provider store={store}>
-            <RootElement />
+            <MuiThemeProvider muiTheme={getMuiTheme()}>
+                <RootElement />
+            </MuiThemeProvider>
         </Provider>,
         container
     );
