@@ -13,7 +13,7 @@ import zeroPad from "../../../util/zeroPad";
 export default props => {
     return (
         <Paper className={styles.leaderboardItem}>
-            <div className={styles.rank}>{props.rank}</div>
+            <div className={styles.rank}>{props.showRank ? props.rank : null}</div>
             <div className={styles.score}>{zeroPad(props.score)}</div>
             <div className={styles.name}>
                 <Avatar userName={props.userName} />
