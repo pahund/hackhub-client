@@ -15,8 +15,9 @@ const config = require("./config");
 const devServerConfig = {
     hot: true,
     headers: { "Access-Control-Allow-Origin": "*" },
-    contentBase: path.resolve(__dirname, "../../demo")
+    contentBase: path.resolve(__dirname, "../public")
 };
+console.log("[PH_LOG] devServerConfig.contentBase: ", devServerConfig.contentBase); // PH_TODO: REMOVE
 
 const webpackDevServer = new WebpackDevServer(webpack(webpackConfig), devServerConfig);
 

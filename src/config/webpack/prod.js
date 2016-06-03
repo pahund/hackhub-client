@@ -15,7 +15,7 @@ const webpack = require("webpack");
 
 const prod = Object.assign({}, base, {
     output: {
-        filename: path.resolve(__dirname, "../../../dist/bundle.js")
+        filename: path.resolve(__dirname, "../../../public/js/bundle.js")
     }
 });
 prod.plugins.push(new webpack.optimize.UglifyJsPlugin({

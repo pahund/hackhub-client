@@ -12,7 +12,6 @@ function App({ hackers }) {
         <li>
             {name}
             {userName}
-            {businessUnit}
             {description}
             {score}
         </li>
