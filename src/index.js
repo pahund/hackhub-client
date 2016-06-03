@@ -22,6 +22,8 @@ import App from "./containers/App";
 import fetchData from "./util/fetchData";
 import rootReducer from "./reducers";
 import config from "./config";
+import fetchHackersAction from "./actions/fetchHackers";
+import fetchHackersSaga from "./sagas/fetchHackers";
 
 const container = document.getElementById("app");
 const sagaMiddleware = createSagaMiddleware();
@@ -37,8 +39,7 @@ fetchData(config.serviceUrl, "hackers").then(hackers => {
         },
         applyMiddleware(sagaMiddleware)
     );
-    // PH_TODO: run middlewares here
-    // sagaMiddleware.run(deleteMessages, actionUrls, serviceUrl, folderName);
+    sagaMiddleware.run(fetchHackersSaga);
     render(App, store);
 
     // Whenever a new version of App.js is available, require the new version and render it instead
@@ -48,6 +49,8 @@ fetchData(config.serviceUrl, "hackers").then(hackers => {
             render(require("./containers/App").default, store)
         );
     }
+
+    setInterval(() => store.dispatch(fetchHackersAction()), config.updateInterval);
 });
 
 function render(RootElement, store) {

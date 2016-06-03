@@ -14,5 +14,6 @@ module.exports = {
     dev: process.env.NODE_ENV === "development",
     devServerPort: process.env.NODE_PORT || 3000,
     serviceUrl: process.env.NODE_ENV === "prod" ?
-        "http://PH_TODO/my/prop/api" : "http://localhost:8080/api"
+        "http://PH_TODO/my/prop/api" : "http://localhost:8080/api",
+    updateInterval: 5000
 };
