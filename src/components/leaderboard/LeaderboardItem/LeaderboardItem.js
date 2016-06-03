@@ -7,6 +7,7 @@
 import React, { Component, PropTypes } from "react";
 import styles from "./leaderboardItem.scss";
 import Paper from "material-ui/Paper";
+import Avatar from "../../users/Avatar";
 import zeroPad from "../../../util/zeroPad";
 
 export default props => {
@@ -15,6 +16,7 @@ export default props => {
             <div className={styles.rank}>{props.rank}</div>
             <div className={styles.score}>{zeroPad(props.score)}</div>
             <div className={styles.name}>
+                <Avatar userName={props.userName} />
                 <strong>{props.name}</strong>
                 {props.description ? <br /> : null}
                 {props.description}
