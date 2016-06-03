@@ -22,15 +22,17 @@
     .rank {
         text-align: center;
         font-size: 2em;
-        flex: 1 10%;
+        flex: 1 5%;
     }
 
     .score {
-        flex: 1 20%;
+        flex: 1 10%;
         text-align: center;
     }
 
     .name {
-        flex: 1 60%;
+        flex: 1 85%;
+        display: flex;
+        align-items: center;
     }
 }

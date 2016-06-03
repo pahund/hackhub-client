@@ -17,9 +17,11 @@ export default props => {
             <div className={styles.score}>{zeroPad(props.score)}</div>
             <div className={styles.name}>
                 <Avatar userName={props.userName} />
-                <strong>{props.name}</strong>
-                {props.description ? <br /> : null}
-                {props.description}
+                <div>
+                    <strong>{props.name}</strong>
+                    {props.description ? <br /> : null}
+                    {props.description}
+                </div>
             </div>
         </Paper>
     );
