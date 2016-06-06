@@ -11,7 +11,10 @@ import zeroPad from "../../../util/zeroPad";
 
 export default props => {
     return (
-        <Paper className={styles.leaderboardItem}>
+        <Paper className={styles.leaderboardItem} style={{
+            backgroundImage: `url(./images/team-badges/${props.slackChannel}.png)`,
+            borderRadius: "10px"
+        }}>
             <div className={styles.rank}>{props.showRank ? props.rank : null}</div>
             <div className={styles.score}>{zeroPad(props.score)}</div>
             <div className={styles.name}>
