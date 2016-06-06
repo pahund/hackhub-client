@@ -12,11 +12,17 @@ import LeaderboardItem from "../components/leaderboard/LeaderboardItem";
 
 function App({ teams }) {
     // PH_TODO: don't do this every time the component is rendered, only when data is updated
-    const sortedTeams = teams.sort(({ score: score1 }, { score: score2 }) => {
+    const sortedTeams = teams.sort(({ score: score1, name: name1 }, { score: score2, name: name2 }) => {
         if (score1 < score2) {
             return 1;
         }
         if (score1 > score2) {
+            return -1;
+        }
+        if (name1 > name2) {
+            return 1;
+        }
+        if (name1 < name2) {
             return -1;
         }
         return 0;
