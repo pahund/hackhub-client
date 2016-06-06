@@ -5,12 +5,10 @@
  * @since 03 Jun 2016
  */
 
-export default (serviceUrl, endPoint) => {
-    const url = createUrl(serviceUrl, endPoint);
-    return fetch(url, { credentials: "same-origin" })
+export default (serviceUrl, endPoint) =>
+    fetch(createUrl(serviceUrl, endPoint), { credentials: "same-origin" })
         .then(checkStatus)
         .then(parseJSON);
-};
 
 function createUrl(serviceUrl, endPoint) {
     const normalizedUrl = `${serviceUrl}${serviceUrl.endsWith("/") ? "" : "/"}`;

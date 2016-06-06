@@ -23,7 +23,7 @@ import fetchData from "./util/fetchData";
 import rootReducer from "./reducers";
 import config from "./config";
 import fetchHackersAction from "./actions/fetchHackers";
-import fetchHackersSaga from "./sagas/fetchHackers";
+import updateLeaderboardsSaga from "./sagas/updateLeaderboards";
 
 const container = document.getElementById("app");
 const sagaMiddleware = createSagaMiddleware();
@@ -31,7 +31,7 @@ const sagaMiddleware = createSagaMiddleware();
 // Needed for onTouchTap
 injectTapEventPlugin();
 
-fetchData(config.serviceUrl, "hackers").then(hackers => {
+fetchData(config.serviceUrl, "all").then(({ hackers }) => {
     const store = createStore(
         rootReducer,
         {
@@ -39,7 +39,7 @@ fetchData(config.serviceUrl, "hackers").then(hackers => {
         },
         applyMiddleware(sagaMiddleware)
     );
-    sagaMiddleware.run(fetchHackersSaga);
+    sagaMiddleware.run(updateLeaderboardsSaga);
     render(App, store);
 
     // Whenever a new version of App.js is available, require the new version and render it instead

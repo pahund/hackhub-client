@@ -1,5 +1,5 @@
 /**
- * fetchHackers.js
+ * updateLeaderboards.js
  *
  * @author <a href="mailto:pahund@team.mobile.de">Patrick Hund</a>
  * @since 03 Jun 2016
@@ -10,11 +10,11 @@ import config from "../config";
 import fetchData from "../util/fetchData";
 import updateHackers from "../actions/updateHackers";
 
-export function *fetchHackers() {
-    const hackers = yield call(fetchData, config.serviceUrl, "hackers");
-    yield put(updateHackers(hackers));
+export function *updateLeaderboards() {
+    const scores = yield call(fetchData, config.serviceUrl, "update");
+    yield put(updateHackers(scores));
 }
 
 export default function *() {
-    yield* takeLatest("FETCH_HACKERS", fetchHackers);
+    yield* takeLatest("FETCH_HACKERS", updateLeaderboards);
 }

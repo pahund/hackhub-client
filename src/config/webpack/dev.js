@@ -37,6 +37,7 @@ dev.module.loaders.push({
         "sass"
     ]
 });
-dev.devtool = "#eval-source-map";
+// dev.devtool = "#eval-source-map";
+dev.devtool = "#source-map";
 
 module.exports = dev;

@@ -36,7 +36,7 @@ function App({ hackers }) {
     });
     return (
         <div>
-            <h1>Hacker Leaderboard</h1>
+            <h1>Top Hackers</h1>
             <Leaderboard>{rankedHackers.map(({ name, userName, description, score, rank, showRank }) => (
                 <LeaderboardItem key={`user-leaderboard-${userName}`}
                                  rank={rank}
