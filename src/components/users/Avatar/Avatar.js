@@ -5,7 +5,7 @@
  * @since 03 Jun 2016
  */
 import React, { Component, PropTypes } from "react";
-import styles from "./avatar.scss";
+import styles from "./avatar.css";
 
 export default props => {
     return (

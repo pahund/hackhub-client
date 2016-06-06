@@ -5,13 +5,13 @@
     overflow: hidden;
     border-radius: 50%;
     margin-right: 12px;
+}
 
-    img {
-        display: inline;
-        margin: 0 auto;
-        height: 100%;
-        width: auto;
-    }
+img {
+    display: inline;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
 }
 
 

@@ -1,5 +1,5 @@
 /**
- * App.js
+ * Hackers.js
  *
  * @author <a href="mailto:pahund@team.mobile.de">Patrick Hund</a>
  * @since 03 Jun 2016
@@ -10,9 +10,9 @@ import { connect } from "react-redux";
 import Leaderboard from "../components/leaderboard/Leaderboard";
 import LeaderboardItem from "../components/leaderboard/LeaderboardItem";
 
-function App({ teams }) {
+function App({ hackers }) {
     // PH_TODO: don't do this every time the component is rendered, only when data is updated
-    const sortedTeams = teams.sort(({ score: score1 }, { score: score2 }) => {
+    const sortedHackers = hackers.sort(({ score: score1 }, { score: score2 }) => {
         if (score1 < score2) {
             return 1;
         }
@@ -22,27 +22,28 @@ function App({ teams }) {
         return 0;
     });
     let rank = 1;
-    const rankedTeams = [];
-    sortedTeams.forEach((team, index) => {
+    const rankedHackers = [];
+    sortedHackers.forEach((hacker, index) => {
         if (index === 0) {
-            rankedTeams.push({ ...team, rank, showRank: true });
+            rankedHackers.push({ ...hacker, rank, showRank: true });
             return;
         }
-        if (sortedTeams[index - 1].score === team.score) {
-            rankedTeams.push({ ...team, rank, showRank: false });
+        if (sortedHackers[index - 1].score === hacker.score) {
+            rankedHackers.push({ ...hacker, rank, showRank: false });
             return;
         }
-        rankedTeams.push({ ...team, rank: ++rank, showRank: true });
+        rankedHackers.push({ ...hacker, rank: ++rank, showRank: true });
     });
     return (
         <div>
-            <h1>Top Teams</h1>
-            <Leaderboard>{rankedTeams.map(({ name, slackChannel, score, rank, showRank }) => (
-                <LeaderboardItem key={`team-leaderboard-${slackChannel}`}
+            <h1>Top Hackers</h1>
+            <Leaderboard>{rankedHackers.map(({ name, userName, description, score, rank, showRank }) => (
+                <LeaderboardItem key={`user-leaderboard-${userName}`}
                                  rank={rank}
                                  showRank={showRank}
                                  name={name}
-                                 slackChannel={slackChannel}
+                                 userName={userName}
+                                 description={description}
                                  score={score} />
             ))}</Leaderboard>
         </div>
@@ -51,6 +52,6 @@ function App({ teams }) {
 
 export default connect(
     state => ({
-        teams: state.teams
+        hackers: state.hackers
     })
 )(App);

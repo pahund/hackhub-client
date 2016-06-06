@@ -29,12 +29,11 @@ dev.plugins.push(new webpack.DefinePlugin({
     "process.env.NODE_ENV": "\"development\""
 }));
 dev.module.loaders.push({
-    test: /\.scss$/,
+    test: /\.css$/,
     loaders: [
         "style",
         "css?modules&localIdentName=[path]-[local]",
-        "postcss",
-        "sass"
+        "postcss"
     ]
 });
 // dev.devtool = "#eval-source-map";

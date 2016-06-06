@@ -8,13 +8,13 @@ import { takeLatest } from "redux-saga";
 import { call, put } from "redux-saga/effects";
 import config from "../config";
 import fetchData from "../util/fetchData";
-import updateHackers from "../actions/updateHackers";
+import updateTeams from "../actions/updateTeams";
 
 export function *updateLeaderboards() {
     const scores = yield call(fetchData, config.serviceUrl, "update");
-    yield put(updateHackers(scores));
+    yield put(updateTeams(scores));
 }
 
 export default function *() {
-    yield* takeLatest("FETCH_HACKERS", updateLeaderboards);
+    yield* takeLatest("FETCH_SCORES", updateLeaderboards);
 }

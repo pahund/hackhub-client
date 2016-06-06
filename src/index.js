@@ -22,7 +22,7 @@ import App from "./containers/App";
 import fetchData from "./util/fetchData";
 import rootReducer from "./reducers";
 import config from "./config";
-import fetchHackersAction from "./actions/fetchHackers";
+import fetchScoresAction from "./actions/fetchScores";
 import updateLeaderboardsSaga from "./sagas/updateLeaderboards";
 
 const container = document.getElementById("app");
@@ -34,11 +34,11 @@ injectTapEventPlugin();
 console.log(`environment: ${process.env.NODE_ENV}`);
 console.log(`service URL: ${config.serviceUrl}`);
 
-fetchData(config.serviceUrl, "all").then(({ hackers }) => {
+fetchData(config.serviceUrl, "all").then(({ teams }) => {
     const store = createStore(
         rootReducer,
         {
-            hackers
+            teams
         },
         applyMiddleware(sagaMiddleware)
     );
@@ -53,7 +53,7 @@ fetchData(config.serviceUrl, "all").then(({ hackers }) => {
         );
     }
 
-    setInterval(() => store.dispatch(fetchHackersAction()), config.updateInterval);
+    setInterval(() => store.dispatch(fetchScoresAction()), config.updateInterval);
 });
 
 function render(RootElement, store) {

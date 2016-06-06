@@ -27,12 +27,11 @@ prod.plugins.push(new webpack.DefinePlugin({
     "process.env.NODE_ENV": "\"production\""
 }));
 prod.module.loaders.push({
-    test: /\.scss$/,
+    test: /\.css$/,
     loaders: [
         "style",
         "css?modules",
-        "postcss",
-        "sass"
+        "postcss"
     ]
 });
 

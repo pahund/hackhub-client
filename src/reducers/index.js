@@ -4,12 +4,12 @@
  * @author <a href="mailto:pahund@team.mobile.de">Patrick Hund</a>
  * @since 03 Jun 2016
  */
-import handleUpdateHackers from "./handlers/handleUpdateHackers";
+import handleUpdateTeams from "./handlers/handleUpdateTeams";
 
 export default (state, action) => {
     switch (action.type) {
-        case "UPDATE_HACKERS":
-            return handleUpdateHackers(state, action);
+        case "UPDATE_TEAMS":
+            return handleUpdateTeams(state, action);
         default:
     }
     return state;
