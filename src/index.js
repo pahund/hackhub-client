@@ -31,6 +31,9 @@ const sagaMiddleware = createSagaMiddleware();
 // Needed for onTouchTap
 injectTapEventPlugin();
 
+console.log(`environment: ${process.env.NODE_ENV}`);
+console.log(`service URL: ${config.serviceUrl}`);
+
 fetchData(config.serviceUrl, "all").then(({ hackers }) => {
     const store = createStore(
         rootReducer,
