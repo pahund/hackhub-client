@@ -11,7 +11,6 @@ import Leaderboard from "../components/leaderboard/Leaderboard";
 import LeaderboardItem from "../components/leaderboard/LeaderboardItem";
 
 function App({ hackers }) {
-    // PH_TODO: don't do this every time the component is rendered, only when data is updated
     const sortedHackers = hackers.sort(({ score: score1 }, { score: score2 }) => {
         if (score1 < score2) {
             return 1;
