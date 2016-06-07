@@ -14,6 +14,6 @@ module.exports = {
     dev: process.env.NODE_ENV === "development",
     devServerPort: process.env.NODE_PORT || 3000,
     serviceUrl: process.env.NODE_ENV === "production" ?
-        "http://10.41.21.124/api" : "http://localhost:8080/api",
+        "https://10.41.21.124/api" : "http://localhost:8080/api",
     updateInterval: 5000
 };

@@ -4,8 +4,8 @@
   "description": "Client-side code for HackHub, website for the eBay Classifieds Group TechHack Berlin 2016",
   "main": "src/index.js",
   "scripts": {
-    "start": "SCRIPTY_SILENT=true scripty",
-    "postinstall": "SCRIPTY_SILENT=true scripty",
+    "start": "node ./src/dev-server.js",
+    "postinstall": "./node_modules/.bin/webpack --config ./src/config/webpack/prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -38,7 +38,6 @@
     "babel-preset-react": "^6.5.0",
     "css-loader": "^0.23.1",
     "postcss-loader": "^0.9.1",
-    "scripty": "^1.6.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
