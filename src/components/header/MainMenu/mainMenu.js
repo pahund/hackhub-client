@@ -7,7 +7,6 @@ function MainMenu(props) {
     const { items } = props;
     return (
         <AppBar title="eCG Tech Hack 2016"
-                style={{ backgroundColor: "black" }}
                 iconElementLeft={
                     <IconButton style={{ width: "180px", padding: 0 }}>
                         <img src="./images/techhack-logo.svg" />
@@ -15,7 +14,7 @@ function MainMenu(props) {
                 }>
             <Tabs style={{ marginTop: "8px" }}>
                 {items.map((item, index) =>
-                    <Tab style={{ minWidth: "120px", backgroundColor: "black" }}
+                    <Tab style={{ minWidth: "120px" }}
                          label={item.label} key={`mainMenu-item${index}`} />
                 )}
             </Tabs>
