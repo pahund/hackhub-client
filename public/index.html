@@ -9,7 +9,7 @@
 <body>
     <div id="app"></div>
     <script>
-        const src = location.host.startsWith("localhost") ? "http://localhost:3000/bundle.js" : "./js/bundle.js";
+        const src = location.host.startsWith("localhost") ? "http://localhost:3000/bundle.js" : "/js/bundle.js";
         const script = document.createElement("script");
         script.setAttribute("src", src);
         document.body.appendChild(script);
