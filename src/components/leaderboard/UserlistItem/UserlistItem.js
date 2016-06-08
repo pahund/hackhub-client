@@ -11,7 +11,9 @@ import Avatar from "../../users/Avatar";
 
 export default props => {
     return (
-        <Paper className={styles.userlistItem}>
+        <Paper className={styles.userlistItem} style={{
+            borderRadius: "10px"
+        }}>
             <div className={styles.name}>
                 <Avatar userName={props.userName} />
                 <div>

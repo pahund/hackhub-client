@@ -9,6 +9,7 @@ import MainMenu from "../components/header/MainMenu";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import theme from "../config/theme";
 import Teams from "./Teams";
+import { withRouter } from "react-router"
 
 class App extends Component {
     getChildContext() {
@@ -18,20 +19,28 @@ class App extends Component {
     }
 
     render() {
+        const { children, router, location } = this.props;
+        const current = location.pathname === "/" ? "/teams/" : location.pathname;
         return (
             <div>
-                <MainMenu items={[
+                <MainMenu current={current} onLogoClick={() => router.push("/")} items={[
                     {
-                        label: "Teams"
+                        label: "Teams",
+                        onActive: () => router.push("/teams/"),
+                        value: "/teams/"
                     },
+                    // {
+                    //     label: "Achievements",
+                    //     onActive: () => router.push("/achievements")
+                    //     value: "/achievements"
+                    // },
                     {
-                        label: "Achievements"
-                    },
-                    {
-                        label: "Hackers"
+                        label: "Hackers",
+                        onActive: () => router.push("/hackers/"),
+                        value: "/hackers/"
                     }
                 ]} />
-                <Teams />
+                {children}
             </div>
         );
     }
@@ -41,5 +50,5 @@ App.childContextTypes = {
     muiTheme: React.PropTypes.object
 };
 
-export default App;
+export default withRouter(App);
 

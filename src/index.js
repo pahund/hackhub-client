@@ -12,13 +12,16 @@ import "whatwg-fetch";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
-import injectTapEventPlugin from "react-tap-event-plugin";
+import { createStore, applyMiddleware } from "redux";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
+import injectTapEventPlugin from "react-tap-event-plugin";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import { Router, Route, browserHistory, IndexRoute } from "react-router";
 
 import App from "./containers/App";
+import Teams from "./containers/Teams";
+import Hackers from "./containers/Hackers";
 import fetchData from "./util/fetchData";
 import rootReducer from "./reducers";
 import config from "./config";
@@ -34,35 +37,31 @@ injectTapEventPlugin();
 console.log(`environment: ${process.env.NODE_ENV}`);
 console.log(`service URL: ${config.serviceUrl}`);
 
-fetchData(config.serviceUrl, "all").then(({ teams }) => {
+fetchData(config.serviceUrl, "all").then(({ teams, hackers }) => {
     const store = createStore(
         rootReducer,
         {
-            teams
+            teams,
+            hackers
         },
         applyMiddleware(sagaMiddleware)
     );
     sagaMiddleware.run(updateLeaderboardsSaga);
-    render(App, store);
-
-    // Whenever a new version of App.js is available, require the new version and render it instead
-    // https://medium.com/@dan_abramov/hot-reloading-in-react-1140438583bf#.eqko7slb2
-    if (module.hot) {
-        module.hot.accept("./containers/App", () =>
-            render(require("./containers/App").default, store)
-        );
-    }
-
-    setInterval(() => store.dispatch(fetchScoresAction()), config.updateInterval);
-});
-
-function render(RootElement, store) {
     ReactDOM.render(
         <Provider store={store}>
             <MuiThemeProvider muiTheme={getMuiTheme()}>
-                <RootElement />
+                <Router history={browserHistory}>
+                    <Route path="/" component={App}>
+                        <IndexRoute component={Teams} />
+                        <Route path="/teams" component={Teams} />
+                        <Route path="/hackers" component={Hackers} />
+                    </Route>
+                </Router>
             </MuiThemeProvider>
         </Provider>,
         container
     );
-}
+
+    setInterval(() => store.dispatch(fetchScoresAction()), config.updateInterval);
+});
+

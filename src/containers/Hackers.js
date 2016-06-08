@@ -8,44 +8,33 @@ import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
 import Leaderboard from "../components/leaderboard/Leaderboard";
-import LeaderboardItem from "../components/leaderboard/LeaderboardItem";
+import UserListItem from "../components/leaderboard/UserListItem";
+import MainBox from "../components/MainBox";
 
 function App({ hackers }) {
-    const sortedHackers = hackers.sort(({ score: score1 }, { score: score2 }) => {
-        if (score1 < score2) {
+    const sortedHackers = hackers.sort(({ name: name1 }, { name: name2 }) => {
+        const normalized = {
+            name1: name1.toLocaleLowerCase(),
+            name2: name2.toLocaleLowerCase()
+        };
+        if (normalized.name1 > normalized.name2) {
             return 1;
         }
-        if (score1 > score2) {
+        if (normalized.name1 < normalized.name2) {
             return -1;
         }
         return 0;
     });
-    let rank = 1;
-    const rankedHackers = [];
-    sortedHackers.forEach((hacker, index) => {
-        if (index === 0) {
-            rankedHackers.push({ ...hacker, rank, showRank: true });
-            return;
-        }
-        if (sortedHackers[index - 1].score === hacker.score) {
-            rankedHackers.push({ ...hacker, rank, showRank: false });
-            return;
-        }
-        rankedHackers.push({ ...hacker, rank: ++rank, showRank: true });
-    });
     return (
-        <div>
-            <h1>Top Hackers</h1>
-            <Leaderboard>{rankedHackers.map(({ name, userName, description, score, rank, showRank }) => (
-                <LeaderboardItem key={`user-leaderboard-${userName}`}
-                                 rank={rank}
-                                 showRank={showRank}
+        <MainBox>
+            <h1>eCG Hackers</h1>
+            <Leaderboard>{sortedHackers.map(({ name, userName, description, score, rank, showRank }) => (
+                <UserListItem key={`hacker-${userName}`}
                                  name={name}
                                  userName={userName}
-                                 description={description}
-                                 score={score} />
+                                 description={description} />
             ))}</Leaderboard>
-        </div>
+        </MainBox>
     );
 }
 

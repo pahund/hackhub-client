@@ -15,7 +15,10 @@ const config = require("./config");
 const devServerConfig = {
     hot: true,
     headers: { "Access-Control-Allow-Origin": "*" },
-    contentBase: path.resolve(__dirname, "../public")
+    contentBase: path.resolve(__dirname, "../public"),
+    historyApiFallback: {
+        index: `http://localhost:${config.devServerPort}/`
+    }
 };
 
 const webpackDevServer = new WebpackDevServer(webpack(webpackConfig), devServerConfig);

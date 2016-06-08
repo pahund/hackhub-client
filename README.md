@@ -24,3 +24,9 @@ favorite webserver, or create a symlink or something.
 ```
 npm start
 ```
+
+This starts a webpack dev server on port 3000. Use your favorite browser to navigate to
+[localhost:3000](http://localhost:3000).
+
+*Note:* you also need to run the backend server to actually see anything. Refer to the 
+[hackhub-server](https://github.com/pahund/hackhub-server) project to find out more about this.
