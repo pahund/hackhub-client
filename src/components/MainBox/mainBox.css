@@ -1,0 +1,10 @@
+.mainBox {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.mainBox > div {
+    flex: 1 100%;
+    max-width: 950px;
+    margin: 0 10px 10px 10px;
+}

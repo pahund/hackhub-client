@@ -15,6 +15,7 @@
 
 .leaderboardItem > * {
     margin-right: 12px;
+    text-shadow: 0 0 0.2em white, 0 0 0.2em white, 0 0 0.2em white;
 }
 
 .leaderboardItem > *:last-child {
@@ -23,7 +24,7 @@
 
 .rank {
     text-align: center;
-    font-size: 2em;
+    font-size: 1.5em;
     flex: 1 5%;
 }
 

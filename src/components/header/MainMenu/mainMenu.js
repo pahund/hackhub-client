@@ -14,8 +14,9 @@ function MainMenu(props) {
                     </IconButton>
                 }>
             <Tabs style={{ marginTop: "8px" }}>
-                {items.map(item =>
-                    <Tab style={{ minWidth: "120px", backgroundColor: "black" }} label={item.label} />
+                {items.map((item, index) =>
+                    <Tab style={{ minWidth: "120px", backgroundColor: "black" }}
+                         label={item.label} key={`mainMenu-item${index}`} />
                 )}
             </Tabs>
         </AppBar>

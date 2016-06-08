@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 
 import Leaderboard from "../components/leaderboard/Leaderboard";
 import LeaderboardItem from "../components/leaderboard/LeaderboardItem";
+import MainBox from "../components/MainBox";
 
 function Teams({ teams }) {
     const sortedTeams = teams.sort(({ score: score1, name: name1 }, { score: score2, name: name2 }) => {
@@ -40,7 +41,7 @@ function Teams({ teams }) {
         rankedTeams.push({ ...team, rank: ++rank, showRank: true });
     });
     return (
-        <div>
+        <MainBox>
             <h1>Top Teams</h1>
             <Leaderboard>{rankedTeams.map(({ name, slackChannel, score, rank, showRank }) => (
                 <LeaderboardItem key={`team-leaderboard-${slackChannel}`}
@@ -50,7 +51,7 @@ function Teams({ teams }) {
                                  slackChannel={slackChannel}
                                  score={score} />
             ))}</Leaderboard>
-        </div>
+        </MainBox>
     );
 }
 
