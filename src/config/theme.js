@@ -32,7 +32,7 @@ export default {
     zIndex: zIndex,
     fontFamily: "Roboto, sans-serif",
     palette: {
-        primary1Color: cyan500,
+        primary1Color: darkBlack,
         primary2Color: cyan700,
         primary3Color: lightBlack,
         accent1Color: "#86B817", // eBay green
