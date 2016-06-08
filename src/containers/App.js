@@ -29,11 +29,11 @@ class App extends Component {
                         onActive: () => router.push("/teams/"),
                         value: "/teams/"
                     },
-                    // {
-                    //     label: "Achievements",
-                    //     onActive: () => router.push("/achievements")
-                    //     value: "/achievements"
-                    // },
+                    {
+                        label: "Achievements",
+                        onActive: () => router.push("/achievements"),
+                        value: "/achievements"
+                    },
                     {
                         label: "Hackers",
                         onActive: () => router.push("/hackers/"),

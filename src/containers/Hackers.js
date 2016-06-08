@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import Hacker from "../components/Hacker";
 import MainBox from "../components/MainBox";
 
-function App({ hackers }) {
+function Hackers({ hackers }) {
     const sortedHackers = hackers.sort(({ name: name1 }, { name: name2 }) => {
         const normalized = {
             name1: name1.toLocaleLowerCase(),
@@ -41,4 +41,4 @@ export default connect(
     state => ({
         hackers: state.hackers
     })
-)(App);
+)(Hackers);

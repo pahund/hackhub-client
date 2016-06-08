@@ -22,6 +22,7 @@ import { Router, Route, browserHistory, IndexRoute } from "react-router";
 import App from "./containers/App";
 import Teams from "./containers/Teams";
 import Hackers from "./containers/Hackers";
+import Achievements from "./containers/Achievements";
 import fetchData from "./util/fetchData";
 import rootReducer from "./reducers";
 import config from "./config";
@@ -37,12 +38,13 @@ injectTapEventPlugin();
 console.log(`environment: ${process.env.NODE_ENV}`);
 console.log(`service URL: ${config.serviceUrl}`);
 
-fetchData(config.serviceUrl, "all").then(({ teams, hackers }) => {
+fetchData(config.serviceUrl, "all").then(({ teams, hackers, achievements }) => {
     const store = createStore(
         rootReducer,
         {
             teams,
-            hackers
+            hackers,
+            achievements
         },
         applyMiddleware(sagaMiddleware)
     );
@@ -55,6 +57,7 @@ fetchData(config.serviceUrl, "all").then(({ teams, hackers }) => {
                         <IndexRoute component={Teams} />
                         <Route path="/teams" component={Teams} />
                         <Route path="/hackers" component={Hackers} />
+                        <Route path="/achievements" component={Achievements} />
                     </Route>
                 </Router>
             </MuiThemeProvider>
