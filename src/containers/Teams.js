@@ -7,8 +7,7 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
-import Leaderboard from "../components/leaderboard/Leaderboard";
-import LeaderboardItem from "../components/leaderboard/LeaderboardItem";
+import Team from "../components/Team";
 import MainBox from "../components/MainBox";
 
 function Teams({ teams }) {
@@ -43,14 +42,14 @@ function Teams({ teams }) {
     return (
         <MainBox>
             <h1>Top Teams</h1>
-            <Leaderboard>{rankedTeams.map(({ name, slackChannel, score, rank, showRank }) => (
-                <LeaderboardItem key={`team-leaderboard-${slackChannel}`}
+            {rankedTeams.map(({ name, slackChannel, score, rank, showRank }) => (
+                <Team key={`team-leaderboard-${slackChannel}`}
                                  rank={rank}
                                  showRank={showRank}
                                  name={name}
                                  slackChannel={slackChannel}
                                  score={score} />
-            ))}</Leaderboard>
+            ))}
         </MainBox>
     );
 }

@@ -7,8 +7,7 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
 
-import Leaderboard from "../components/leaderboard/Leaderboard";
-import UserListItem from "../components/leaderboard/UserListItem";
+import Hacker from "../components/Hacker";
 import MainBox from "../components/MainBox";
 
 function App({ hackers }) {
@@ -28,12 +27,12 @@ function App({ hackers }) {
     return (
         <MainBox>
             <h1>eCG Hackers</h1>
-            <Leaderboard>{sortedHackers.map(({ name, userName, description, score, rank, showRank }) => (
-                <UserListItem key={`hacker-${userName}`}
+            {sortedHackers.map(({ name, userName, description, score, rank, showRank }) => (
+                <Hacker key={`hacker-${userName}`}
                                  name={name}
                                  userName={userName}
                                  description={description} />
-            ))}</Leaderboard>
+            ))}
         </MainBox>
     );
 }

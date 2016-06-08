@@ -5,7 +5,7 @@
  * @since 03 Jun 2016
  */
 import React, { Component, PropTypes } from "react";
-import MainMenu from "../components/header/MainMenu";
+import MainMenu from "../components/MainMenu";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import theme from "../config/theme";
 import Teams from "./Teams";

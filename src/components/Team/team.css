@@ -1,4 +1,4 @@
-.leaderboardItem {
+.team {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -9,16 +9,16 @@
     background-position: top right;
 }
 
-.leaderboardItem:last-child {
+.team:last-child {
     margin-bottom: 0;
 }
 
-.leaderboardItem > * {
+.team > * {
     margin-right: 12px;
     text-shadow: 0 0 0.2em white, 0 0 0.2em white, 0 0 0.2em white;
 }
 
-.leaderboardItem > *:last-child {
+.team > *:last-child {
     margin-right: 0;
 }
 

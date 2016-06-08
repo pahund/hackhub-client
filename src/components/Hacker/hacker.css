@@ -1,4 +1,4 @@
-.userlistItem {
+.hacker {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -7,15 +7,15 @@
     min-height: 60px;
 }
 
-.userlistItem:last-child {
+.hacker:last-child {
     margin-bottom: 0;
 }
 
-.userlistItem > * {
+.hacker > * {
     margin-right: 12px;
 }
 
-.userlistItem > *:last-child {
+.hacker > *:last-child {
     margin-right: 0;
 }
 
