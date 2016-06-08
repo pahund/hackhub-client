@@ -31,8 +31,8 @@ class App extends Component {
                     },
                     {
                         label: "Achievements",
-                        onActive: () => router.push("/achievements"),
-                        value: "/achievements"
+                        onActive: () => router.push("/achievements/"),
+                        value: "/achievements/"
                     },
                     {
                         label: "Hackers",
