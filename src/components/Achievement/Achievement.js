@@ -8,7 +8,9 @@ import React, { Component, PropTypes } from "react";
 import styles from "./achievement.css";
 import Paper from "material-ui/Paper";
 import Stars from "material-ui/svg-icons/action/stars";
-import { grey200, yellowA200, amber400 } from 'material-ui/styles/colors';
+import Star from "material-ui/svg-icons/toggle/star";
+
+import { grey300, yellowA400, amber600 } from 'material-ui/styles/colors';
 
 export default ({
     name,
@@ -36,6 +38,8 @@ export default ({
 }
 
 function getIcon(score) {
-    const color = score >= 30 ? yellowA200 : score >= 20 ? grey200 : amber400;
-    return <Stars color={color} style={{ width: "48px", height: "48px" }} />
+    const color = score >= 30 ? yellowA400 : score >= 20 ? grey300 : score >= 10 ? amber600 : "#ffffff";
+    const Icon = score >= 10 ? Stars : Star;
+    const size = score >= 10 ? 48 : 32;
+    return <Icon color={color} style={{ width: `${size}px`, height: `${size}px` }} />
 }
