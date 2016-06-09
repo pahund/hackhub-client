@@ -25,7 +25,7 @@ export default ({
                 {getIcon(score)}
             </div>
             <div className={styles.score}>
-                {score} Points
+                {score} {score === 1 ? "Point" : "Points"}
             </div>
             <div className={styles.name}>
                 <div>
