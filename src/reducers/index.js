@@ -4,13 +4,13 @@
  * @author <a href="mailto:pahund@team.mobile.de">Patrick Hund</a>
  * @since 03 Jun 2016
  */
-import handleUpdateTeams from "./handlers/handleUpdateTeams";
+import { combineReducers } from "redux";
+import achievements from "./achievements";
+import teams from "./teams";
+import hackers from "./hackers";
 
-export default (state, action) => {
-    switch (action.type) {
-        case "UPDATE_TEAMS":
-            return handleUpdateTeams(state, action);
-        default:
-    }
-    return state;
-}
+export default combineReducers({
+    achievements,
+    teams,
+    hackers
+});

@@ -7,6 +7,11 @@
     min-height: 60px;
 }
 
+.notAvailable {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
 .achievement:last-child {
     margin-bottom: 0;
 }

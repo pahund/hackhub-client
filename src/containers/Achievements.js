@@ -35,18 +35,20 @@ function Achievements({ achievements }) {
         <MainBox>
             <h1>Achievements</h1>
             <h2>Gold, Silver and Bronze – each is awarded to one team only:</h2>
-            {primaryAchievements.map(({ name, codeName, description, score }) => (
+            {primaryAchievements.map(({ name, codeName, description, score, available }) => (
                 <Achievement key={`achievement-${codeName}`}
                              name={name}
                              score={score}
-                             description={description} />
+                             description={description}
+                             available={available} />
             ))}
             <h2>Bonus Achievements – can be awarded to multiple teams:</h2>
-            {secondaryAchievemnts.map(({ name, codeName, description, score }) => (
+            {secondaryAchievemnts.map(({ name, codeName, description, score, available }) => (
                 <Achievement key={`achievement-${codeName}`}
                              name={name}
                              score={score}
-                             description={description} />
+                             description={description}
+                             available={available} />
             ))}
         </MainBox>
     );

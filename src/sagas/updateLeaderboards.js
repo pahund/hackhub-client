@@ -9,10 +9,12 @@ import { call, put } from "redux-saga/effects";
 import config from "../config";
 import fetchData from "../util/fetchData";
 import updateTeams from "../actions/updateTeams";
+import updateAchievements from "../actions/updateAchievements";
 
 export function *updateLeaderboards() {
-    const scores = yield call(fetchData, config.serviceUrl, "update");
-    yield put(updateTeams(scores));
+    const { teams, achievements } = yield call(fetchData, config.serviceUrl, "update");
+    yield put(updateTeams(teams));
+    yield put(updateAchievements(achievements));
 }
 
 export default function *() {
