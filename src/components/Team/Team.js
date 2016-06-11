@@ -11,7 +11,7 @@ import zeroPad from "../../util/zeroPad";
 import IconWithTooltip from "../IconWithTooltip";
 import Stars from "material-ui/svg-icons/action/stars";
 import Star from "material-ui/svg-icons/toggle/star";
-import { grey300, yellowA400, amber800, grey800 } from 'material-ui/styles/colors';
+import { grey300, yellowA400, amber800, grey800 } from "material-ui/styles/colors";
 
 export default ({
     slackChannel,
@@ -21,7 +21,7 @@ export default ({
     name,
     achievements
 }) => {
-    const smallScreen = window.matchMedia('(max-width: 600px)').matches;
+    const smallScreen = window.matchMedia("(max-width: 600px)").matches;
     const renderedAchievements = achievements.map(achievement => getIcon(smallScreen, slackChannel, achievement))
     return (
         <Paper className={styles.team} style={{

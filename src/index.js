@@ -73,7 +73,7 @@ fetchData(config.serviceUrl, "all").then(({ teams, hackers, achievements }) => {
         },
         applyMiddleware(sagaMiddleware)
     );
-    sagaMiddleware.run(updateLeaderboardsSaga);
+    sagaMiddleware.run(updateLeaderboardsSaga, store.getState);
     ReactDOM.render(
         <Provider store={store}>
             <MuiThemeProvider muiTheme={getMuiTheme()}>

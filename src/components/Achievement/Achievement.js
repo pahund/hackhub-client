@@ -11,7 +11,7 @@ import Stars from "material-ui/svg-icons/action/stars";
 import Star from "material-ui/svg-icons/toggle/star";
 import CheckCircle from "material-ui/svg-icons/action/check-circle";
 import IconWithTooltip from "../IconWithTooltip";
-import { grey300, yellowA400, amber800, green500 } from 'material-ui/styles/colors';
+import { grey300, yellowA400, amber800, green500 } from "material-ui/styles/colors";
 
 export default ({
     name,
