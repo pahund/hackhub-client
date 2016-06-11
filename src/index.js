@@ -38,7 +38,7 @@ injectTapEventPlugin();
 // Polyfill for Array.prototype.find, which is not supported by Android stock browser
 if (!Array.prototype.find) {
     console.log("polyfilling Array.prototype.find");
-    Array.prototype.find = predicate => {
+    Array.prototype.find = function (predicate) {
         if (this == null) {
             throw new TypeError("Array.prototype.find called on null or undefined");
         }
