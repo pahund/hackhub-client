@@ -2,16 +2,21 @@
     margin-bottom: 12px;
 }
 
+.achievement > div {
+    padding: 12px 12px 0 12px;
+}
+
+.achievement > div:last-child {
+    padding: 12px;
+}
+
 .firstRow {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 12px;
-    min-height: 60px;
 }
 .secondRow {
-    padding: 12px;
     display: flex;
 }
 
