@@ -12,8 +12,7 @@ function MainMenu({ items, current, onLogoClick }) {
     const largeScreen = window.matchMedia('(min-width: 1200px)').matches;
     const largeScreenMenu = (
         <Tabs value={current}
-              className={styles.menu}
-        >
+              className={styles.menu}>
             {items.map((item, index) =>
                 <Tab style={{ minWidth: "120px" }}
                      label={item.label}
@@ -24,7 +23,7 @@ function MainMenu({ items, current, onLogoClick }) {
         </Tabs>
     );
     const logo = (
-        <IconButton style={largeScreen ? { width: "180px", padding: 0, marginRight: "8px" } : { height: "39px", padding: 0, marginRight: "8px" }}
+        <IconButton style={ largeScreen ? { width: "180px", padding: 0, marginRight: "8px" } : { height: "39px", padding: 0, marginRight: "8px" } }
                     onClick={onLogoClick}>
             <img src={`/images/techhack-logo-${largeScreen ? "wide" : "square"}.svg`} />
         </IconButton>
