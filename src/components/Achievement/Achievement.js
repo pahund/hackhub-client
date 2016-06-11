@@ -10,7 +10,7 @@ import Paper from "material-ui/Paper";
 import Stars from "material-ui/svg-icons/action/stars";
 import Star from "material-ui/svg-icons/toggle/star";
 import CheckCircle from "material-ui/svg-icons/action/check-circle";
-import IconButton from "material-ui/IconButton";
+import IconWithTooltip from "../IconWithTooltip";
 
 import { grey300, yellowA400, amber600, green500 } from 'material-ui/styles/colors';
 
@@ -35,11 +35,11 @@ export default ({
                     <strong className={available ? null : styles.notAvailable}>{name}</strong>
                     {
                         available ? null :
-                            <IconButton disableTouchRipple={true}
-                                        tooltip="Achievement was already unlocked"
-                                        style={{ cursor: "default" }}>
-                                <CheckCircle color={green500} />
-                            </IconButton>
+                            <IconWithTooltip tooltip="Achievement was already unlocked"
+                                         size={24}
+                                         style={{ marginLeft: "5px" }}
+                                         Icon={CheckCircle}
+                                         color={green500} />
                     }
                     <br />
                     {description}
@@ -50,8 +50,32 @@ export default ({
 }
 
 function getIcon(score) {
-    const color = score >= 30 ? yellowA400 : score >= 20 ? grey300 : score >= 10 ? amber600 : "#ffffff";
-    const Icon = score >= 10 ? Stars : Star;
-    const size = score >= 10 ? 48 : 32;
-    return <Icon color={color} style={{ width: `${size}px`, height: `${size}px` }} />
+    let color,
+        Icon,
+        size,
+        tooltip;
+    if (score >= 30) {
+        color = yellowA400;
+        size = 48;
+        Icon = Stars;
+        tooltip = "Gold Achievement";
+    } else if (score >= 20) {
+        color = grey300;
+        size = 48;
+        Icon = Stars;
+        tooltip = "Silver Achievement";
+    } else if (score >= 10) {
+        color = amber600;
+        size = 48;
+        Icon = Stars;
+        tooltip = "Bronze Achievement";
+    } else {
+        color = "white";
+        size = 32;
+        Icon = Star;
+        tooltip = "Bonus Achievement";
+    }
+    return (
+        <IconWithTooltip Icon={Icon} color={color} tooltip={tooltip} size={size} />
+    );
 }
