@@ -11,8 +11,7 @@ import Stars from "material-ui/svg-icons/action/stars";
 import Star from "material-ui/svg-icons/toggle/star";
 import CheckCircle from "material-ui/svg-icons/action/check-circle";
 import IconWithTooltip from "../IconWithTooltip";
-
-import { grey300, yellowA400, amber600, green500 } from 'material-ui/styles/colors';
+import { grey300, yellowA400, amber800, green500 } from 'material-ui/styles/colors';
 
 export default ({
     name,
@@ -74,7 +73,7 @@ function getIcon(score) {
         Icon = Stars;
         tooltip = "Silver Achievement";
     } else if (score >= 10) {
-        color = amber600;
+        color = amber800;
         size = 48;
         Icon = Stars;
         tooltip = "Bronze Achievement";

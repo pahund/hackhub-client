@@ -6,12 +6,18 @@
  */
 import React, { Component, PropTypes } from "react";
 import { connect } from "react-redux";
-
+import achievementSorter from "../util/achievementSorter";
 import Team from "../components/Team";
 import MainBox from "../components/MainBox";
 
-function Teams({ teams }) {
-    const sortedTeams = teams.sort(({ score: score1, name: name1 }, { score: score2, name: name2 }) => {
+function Teams({ teams, achievements }) {
+    const teamsWithPopulatedAchievements = teams.map(team => ({
+        ...team,
+        achievements: team.achievements.map(
+            codeName => achievements.find(achievement => achievement.codeName === codeName)
+        ).sort(achievementSorter)
+    }));
+    const sortedTeams = teamsWithPopulatedAchievements.sort(({ score: score1, name: name1 }, { score: score2, name: name2 }) => {
         if (score1 < score2) {
             return 1;
         }
@@ -42,13 +48,14 @@ function Teams({ teams }) {
     return (
         <MainBox>
             <h1>Top Teams</h1>
-            {rankedTeams.map(({ name, slackChannel, score, rank, showRank }) => (
+            {rankedTeams.map(({ name, slackChannel, score, rank, showRank, achievements }) => (
                 <Team key={`team-leaderboard-${slackChannel}`}
-                                 rank={rank}
-                                 showRank={showRank}
-                                 name={name}
-                                 slackChannel={slackChannel}
-                                 score={score} />
+                      rank={rank}
+                      showRank={showRank}
+                      name={name}
+                      slackChannel={slackChannel}
+                      achievements={achievements}
+                      score={score} />
             ))}
         </MainBox>
     );
@@ -56,6 +63,7 @@ function Teams({ teams }) {
 
 export default connect(
     state => ({
-        teams: state.teams
+        teams: state.teams,
+        achievements: state.achievements
     })
 )(Teams);

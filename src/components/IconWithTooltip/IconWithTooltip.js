@@ -7,7 +7,15 @@
 import React from "react";
 import IconButton from "material-ui/IconButton";
 
-function IconWithTooltip({ tooltip, size = 32, style = {}, color = "black", Icon }) {
+function IconWithTooltip({
+    tooltip,
+    size = 32,
+    style = {},
+    color = "black",
+    Icon,
+    tooltipPosition = "top-right",
+    iconStyle
+}) {
     const wrapperStyle = {
         padding: 0,
         margin: 0,
@@ -16,17 +24,18 @@ function IconWithTooltip({ tooltip, size = 32, style = {}, color = "black", Icon
         height: `${size}px`,
         ...style
     };
-    const iconStyle = {
+    const finalIconStyle = {
         width: `${size}px`,
-        height: `${size}px`
+        height: `${size}px`,
+        ...iconStyle
     };
     return (
         <IconButton disableTouchRipple={true}
                     touch
-                    tooltipPosition="top-right"
+                    tooltipPosition={tooltipPosition}
                     tooltip={tooltip}
                     style={wrapperStyle}
-                    iconStyle={iconStyle}>
+                    iconStyle={finalIconStyle}>
             <Icon color={color} />
         </IconButton>
     );

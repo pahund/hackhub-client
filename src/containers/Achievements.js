@@ -8,33 +8,14 @@ import React from "react";
 import MainBox from "../components/MainBox";
 import Achievement from "../components/Achievement";
 import { connect } from "react-redux";
+import achievementSorter from "../util/achievementSorter";
 
 function Achievements({ achievements, teams }) {
-    const achievementsWithTeamNames = achievements.map(achievement => {
-        return {
-            ...achievement,
-            teams: achievement.teams.map(slackChannel => teams.find(team => team.slackChannel === slackChannel))
-        }
-    });
-    const sortedAchievements = achievementsWithTeamNames.sort(({ name: name1, score: score1 }, { name: name2, score: score2 }) => {
-        if (score1 < score2) {
-            return 1;
-        }
-        if (score1 > score2) {
-            return -1;
-        }
-        const normalized = {
-            name1: name1.toLocaleLowerCase(),
-            name2: name2.toLocaleLowerCase()
-        };
-        if (normalized.name1 > normalized.name2) {
-            return 1;
-        }
-        if (normalized.name1 < normalized.name2) {
-            return -1;
-        }
-        return 0;
-    });
+    const achievementsWithPopulatedTeams = achievements.map(achievement => ({
+        ...achievement,
+        teams: achievement.teams.map(slackChannel => teams.find(team => team.slackChannel === slackChannel))
+    }));
+    const sortedAchievements = achievementsWithPopulatedTeams.sort(achievementSorter);
     const primaryAchievements = sortedAchievements.filter(({ singleton }) => singleton);
     const secondaryAchievements = sortedAchievements.filter(({ singleton }) => !singleton);
     return (
