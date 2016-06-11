@@ -35,6 +35,31 @@ const sagaMiddleware = createSagaMiddleware();
 // Needed for onTouchTap
 injectTapEventPlugin();
 
+// Polyfill for Array.prototype.find, which is not supported by Android stock browser
+if (!Array.prototype.find) {
+    console.log("polyfilling Array.prototype.find");
+    Array.prototype.find = predicate => {
+        if (this == null) {
+            throw new TypeError("Array.prototype.find called on null or undefined");
+        }
+        if (typeof predicate !== "function") {
+            throw new TypeError("predicate must be a function");
+        }
+        const list = Object(this);
+        const length = list.length >>> 0;
+        const thisArg = arguments[1];
+        let value;
+
+        for (let i = 0; i < length; i++) {
+            value = list[i];
+            if (predicate.call(thisArg, value, i, list)) {
+                return value;
+            }
+        }
+        return undefined;
+    };
+}
+
 console.log(`environment: ${process.env.NODE_ENV}`);
 console.log(`service URL: ${config.serviceUrl}`);
 
