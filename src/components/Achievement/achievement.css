@@ -1,5 +1,6 @@
 .achievement {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 12px;
@@ -25,18 +26,18 @@
 }
 
 .name {
-    flex: 1 85%;
+    flex: 1 500px;
     display: flex;
     align-items: center;
 }
 
 .score {
-    flex: 1 10%;
+    flex: 0 1 120px;
     text-align: center;
 }
 
 .icon {
-    flex: 1 5%;
+    flex: 0 1;
     text-align: center;
 }
 

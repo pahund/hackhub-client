@@ -15,7 +15,7 @@
 
 .team > * {
     margin-right: 12px;
-    text-shadow: 0 0 0.2em white, 0 0 0.2em white, 0 0 0.2em white;
+    text-shadow: 0 0 0.2em white, 0 0 0.2em white, 0 0 0.2em white, 0 0 0.2em white, 0 0 0.2em white, 0 0 0.2em white;
 }
 
 .team > *:last-child {

@@ -14,8 +14,10 @@ export default props => {
         <Paper className={styles.hacker} style={{
             borderRadius: "10px"
         }}>
-            <div className={styles.name}>
+            <div className={styles.avatar}>
                 <Avatar userName={props.userName} />
+            </div>
+            <div className={styles.name}>
                 <div>
                     <strong>{props.name}</strong>
                     {props.description ? <br /> : null}

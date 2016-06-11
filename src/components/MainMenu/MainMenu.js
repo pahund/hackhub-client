@@ -9,7 +9,7 @@ import MoreVertIcon from "material-ui/svg-icons/navigation/more-vert";
 
 function MainMenu({ items, current, onLogoClick }) {
     const smallScreen = window.matchMedia('(max-width: 600px)').matches;
-    const largeScreen = window.matchMedia('(min-width: 1200px)').matches;
+    const largeScreen = window.matchMedia('(min-width: 1000px)').matches;
     const largeScreenMenu = (
         <Tabs value={current}
               className={styles.menu}>
