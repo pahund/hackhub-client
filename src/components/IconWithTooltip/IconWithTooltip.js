@@ -23,7 +23,7 @@ function IconWithTooltip({ tooltip, size = 32, style = {}, color = "black", Icon
     return (
         <IconButton disableTouchRipple={true}
                     touch
-                    tooltipPosition="bottom-right"
+                    tooltipPosition="top-right"
                     tooltip={tooltip}
                     style={wrapperStyle}
                     iconStyle={iconStyle}>

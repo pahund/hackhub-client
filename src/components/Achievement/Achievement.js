@@ -18,33 +18,42 @@ export default ({
     name,
     description,
     score,
-    available
+    available,
+    teams
 }) => {
     return (
-        <Paper className={styles.achievement} style={{
-            borderRadius: "10px"
-        }}>
-            <div className={styles.icon}>
-                {getIcon(score)}
-            </div>
-            <div className={styles.score}>
-                {score} {score === 1 ? "Point" : "Points"}
-            </div>
-            <div className={styles.name}>
-                <div>
-                    <strong className={available ? null : styles.notAvailable}>{name}</strong>
-                    {
-                        available ? null :
-                            <IconWithTooltip tooltip="Achievement was already unlocked"
-                                         size={24}
-                                         style={{ marginLeft: "5px" }}
-                                         Icon={CheckCircle}
-                                         color={green500} />
-                    }
-                    <br />
-                    {description}
+        <Paper style={{ borderRadius: "10px" }} className={styles.achievement}>
+            <div className={styles.firstRow}>
+                <div className={styles.icon}>
+                    {getIcon(score)}
+                </div>
+                <div className={styles.score}>
+                    {score} {score === 1 ? "Point" : "Points"}
+                </div>
+                <div className={styles.name}>
+                    <div>
+                        <strong className={available ? null : styles.notAvailable}>{name}</strong>
+                        <br />
+                        {description}
+                    </div>
                 </div>
             </div>
+            {teams.length ? (
+                <div className={styles.secondRow}>
+                    <div />
+                    <div>
+                        {
+                            available ? null :
+                                <IconWithTooltip tooltip="Achievement was already unlocked"
+                                                 size={24}
+                                                 style={{ marginRight: "5px" }}
+                                                 Icon={CheckCircle}
+                                                 color={green500} />
+                        }
+                        Achieved by {teams.map(team => team.name).join(", ")}
+                    </div>
+                </div>
+            ) : null}
         </Paper>
     );
 }

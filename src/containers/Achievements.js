@@ -9,8 +9,14 @@ import MainBox from "../components/MainBox";
 import Achievement from "../components/Achievement";
 import { connect } from "react-redux";
 
-function Achievements({ achievements }) {
-    const sortedAchievements = achievements.sort(({ name: name1, score: score1 }, { name: name2, score: score2 }) => {
+function Achievements({ achievements, teams }) {
+    const achievementsWithTeamNames = achievements.map(achievement => {
+        return {
+            ...achievement,
+            teams: achievement.teams.map(slackChannel => teams.find(team => team.slackChannel === slackChannel))
+        }
+    });
+    const sortedAchievements = achievementsWithTeamNames.sort(({ name: name1, score: score1 }, { name: name2, score: score2 }) => {
         if (score1 < score2) {
             return 1;
         }
@@ -30,25 +36,27 @@ function Achievements({ achievements }) {
         return 0;
     });
     const primaryAchievements = sortedAchievements.filter(({ singleton }) => singleton);
-    const secondaryAchievemnts = sortedAchievements.filter(({ singleton }) => !singleton);
+    const secondaryAchievements = sortedAchievements.filter(({ singleton }) => !singleton);
     return (
         <MainBox>
             <h1>Achievements</h1>
             <h2>Gold, Silver and Bronze – each is awarded to one team only:</h2>
-            {primaryAchievements.map(({ name, codeName, description, score, available }) => (
+            {primaryAchievements.map(({ name, codeName, description, score, available, teams }) => (
                 <Achievement key={`achievement-${codeName}`}
                              name={name}
                              score={score}
                              description={description}
-                             available={available} />
+                             available={available}
+                             teams={teams} />
             ))}
             <h2>Bonus Achievements – can be awarded to multiple teams:</h2>
-            {secondaryAchievemnts.map(({ name, codeName, description, score, available }) => (
+            {secondaryAchievements.map(({ name, codeName, description, score, available, teams }) => (
                 <Achievement key={`achievement-${codeName}`}
                              name={name}
                              score={score}
                              description={description}
-                             available={available} />
+                             available={available}
+                             teams={teams} />
             ))}
         </MainBox>
     );
@@ -56,6 +64,7 @@ function Achievements({ achievements }) {
 
 export default connect(
     state => ({
-        achievements: state.achievements
+        achievements: state.achievements,
+        teams: state.teams
     })
 )(Achievements);

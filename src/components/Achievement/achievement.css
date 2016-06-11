@@ -1,11 +1,25 @@
 .achievement {
+    margin-bottom: 12px;
+}
+
+.firstRow {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 12px;
     padding: 12px;
     min-height: 60px;
+}
+.secondRow {
+    padding: 12px;
+    display: flex;
+}
+
+.secondRow > div {
+    flex: 1 800px;
+}
+.secondRow > div:first-child {
+    flex: 0 1 178px;
 }
 
 .notAvailable {
@@ -37,7 +51,7 @@
 }
 
 .icon {
-    flex: 0 1;
+    flex: 0 1 48px;
     text-align: center;
 }
 
