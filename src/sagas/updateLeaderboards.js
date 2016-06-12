@@ -38,10 +38,8 @@ export function *updateLeaderboards(getState) {
     });
     if (!achievementMessages.size) {
         // no changes, no update neccessary
-        console.log("[PH_LOG] no new achievements"); // PH_TODO: REMOVE
         return;
     }
-    console.log("[PH_LOG] achievementMessages: ", achievementMessages.size); // PH_TODO: REMOVE
     for (const { team, achievement } of achievementMessages) {
         yield put(showAchievementMessage(team, achievement));
         yield call(delay, config.messageDuration);
