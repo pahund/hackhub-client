@@ -69,7 +69,10 @@ fetchData(config.serviceUrl, "all").then(({ teams, hackers, achievements }) => {
         {
             teams,
             hackers,
-            achievements
+            achievements,
+            messages: {
+                achievementUnlocked: null
+            }
         },
         applyMiddleware(sagaMiddleware)
     );

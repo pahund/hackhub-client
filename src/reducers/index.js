@@ -8,9 +8,11 @@ import { combineReducers } from "redux";
 import achievements from "./achievements";
 import teams from "./teams";
 import hackers from "./hackers";
+import messages from "./messages";
 
 export default combineReducers({
     achievements,
     teams,
-    hackers
+    hackers,
+    messages
 });

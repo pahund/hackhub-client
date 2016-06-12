@@ -10,6 +10,9 @@ import getMuiTheme from "material-ui/styles/getMuiTheme";
 import theme from "../config/theme";
 import Teams from "./Teams";
 import { withRouter } from "react-router"
+import Dialog from "material-ui/Dialog";
+import { connect } from "react-redux";
+import nbsp from "../util/nbsp";
 
 class App extends Component {
     getChildContext() {
@@ -19,7 +22,7 @@ class App extends Component {
     }
 
     render() {
-        const { children, router, location } = this.props;
+        const { children, router, location, messages: { achievementUnlocked } } = this.props;
         const current = location.pathname === "/" ? "/teams/" : location.pathname;
         return (
             <div>
@@ -41,6 +44,26 @@ class App extends Component {
                     }
                 ]} />
                 {children}
+                {achievementUnlocked !== null ? (
+                    <Dialog title="Achievement unlocked!"
+                            modal={false}
+                            open>
+                        <p>
+                            Team <strong>{achievementUnlocked.team.name}</strong>{nbsp}
+                            has just unlocked achievement{nbsp}
+                            <strong>{achievementUnlocked.achievement.name}:</strong>
+                        </p>
+                        <p>
+                            <em>{achievementUnlocked.achievement.description}</em>
+                        </p>
+                        <p>
+                            Score: <strong>{achievementUnlocked.achievement.score} points</strong>
+                        </p>
+                        <p>
+                            Congratulations – you are awesome!
+                        </p>
+                    </Dialog>
+                ) : null}
             </div>
         );
     }
@@ -50,5 +73,8 @@ App.childContextTypes = {
     muiTheme: React.PropTypes.object
 };
 
-export default withRouter(App);
-
+export default connect(
+    state => ({
+        messages: state.messages
+    })
+)(withRouter(App));
