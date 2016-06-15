@@ -22,9 +22,10 @@ function MainMenu({ items, current, onLogoClick }) {
             )}
         </Tabs>
     );
+    const iconStyle = largeScreen ? { width: "180px", padding: 0, marginRight: "8px" } :
+        { width: "50px", height: "50px", padding: 0, marginRight: "8px" };
     const logo = (
-        <IconButton style={ largeScreen ? { width: "180px", padding: 0, marginRight: "8px" } : { height: "39px", padding: 0, marginRight: "8px" } }
-                    onClick={onLogoClick}>
+        <IconButton style={iconStyle} onClick={onLogoClick}>
             <img src={`/images/techhack-logo-${largeScreen ? "wide" : "square"}.svg`} />
         </IconButton>
     );
