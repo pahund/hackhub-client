@@ -61,5 +61,6 @@
 }
 
 .icon svg {
-    filter: drop-shadow(0 0 5px #000);
+    stroke: black;
+    stroke-width: 0.5px;
 }

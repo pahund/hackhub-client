@@ -48,7 +48,7 @@ function getIcon(smallScreen, slackChannel, { score, name, codeName }) {
     const tooltipPosition = smallScreen ? "top-right" : "top-left";
     let color,
         Icon = Stars,
-        iconStyle = { filter: "drop-shadow(0 0 2px #000)" };
+        iconStyle = { strokeWidth: "0.5px", stroke: "black" };
     if (score >= 30) {
         color = yellowA400;
     } else if (score >= 20) {
@@ -58,7 +58,7 @@ function getIcon(smallScreen, slackChannel, { score, name, codeName }) {
     } else {
         color = grey800;
         Icon = Star;
-        iconStyle = { filter: "drop-shadow(0 0 2px #fff)" };
+        iconStyle = { strokeWidth: "0.5px", stroke: "white" };
     }
     return (
         <IconWithTooltip key={`achievement-${slackChannel}-${codeName}`}
