@@ -23,6 +23,7 @@ import App from "./containers/App";
 import Teams from "./containers/Teams";
 import Hackers from "./containers/Hackers";
 import Achievements from "./containers/Achievements";
+import Schedule from "./containers/Schedule";
 import fetchData from "./util/fetchData";
 import rootReducer from "./reducers";
 import config from "./config";
@@ -86,6 +87,7 @@ fetchData(config.serviceUrl, "all").then(({ teams, hackers, achievements }) => {
                         <Route path="/teams" component={Teams} />
                         <Route path="/hackers" component={Hackers} />
                         <Route path="/achievements" component={Achievements} />
+                        <Route path="/schedule" component={Schedule} />
                     </Route>
                 </Router>
             </MuiThemeProvider>

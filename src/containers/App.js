@@ -41,6 +41,11 @@ class App extends Component {
                         label: "Hackers",
                         onActive: () => router.push("/hackers/"),
                         value: "/hackers/"
+                    },
+                    {
+                        label: "Schedule",
+                        onActive: () => router.push("/schedule/"),
+                        value: "/schedule/"
                     }
                 ]} />
                 {children}
