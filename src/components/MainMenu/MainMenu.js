@@ -14,7 +14,8 @@ function MainMenu({ items, current, onLogoClick }) {
         <Tabs value={current}
               className={styles.menu}>
             {items.map((item, index) =>
-                <Tab style={{ minWidth: "90px" }}
+                <Tab className={styles.menuItem} 
+                     style={{ padding: "0 6px 0 6px" }}
                      label={item.label}
                      onActive={item.onActive}
                      key={`mainMenu-item${index}`}
