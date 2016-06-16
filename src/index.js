@@ -29,6 +29,7 @@ import rootReducer from "./reducers";
 import config from "./config";
 import fetchScoresAction from "./actions/fetchScores";
 import updateLeaderboardsSaga from "./sagas/updateLeaderboards";
+import getDateForTimezone from "./util/getDateForTimezone";
 
 const container = document.getElementById("app");
 const sagaMiddleware = createSagaMiddleware();
@@ -64,7 +65,7 @@ if (!Array.prototype.find) {
 console.log(`environment: ${process.env.NODE_ENV}`);
 console.log(`service URL: ${config.serviceUrl}`);
 
-fetchData(config.serviceUrl, "all").then(({ teams, hackers, achievements }) => {
+fetchData(config.serviceUrl, "all").then(({ teams, hackers, achievements, scheduleItems }) => {
     const store = createStore(
         rootReducer,
         {
@@ -73,7 +74,18 @@ fetchData(config.serviceUrl, "all").then(({ teams, hackers, achievements }) => {
             achievements,
             messages: {
                 achievementUnlocked: null
-            }
+            },
+            scheduleItems: scheduleItems.map(item => {
+                console.group(item.events[0].description);
+                console.log("item.start:           ", item.start); // PH_TODO: REMOVE
+                console.log("new Date(item.start): ", new Date(item.start)); // PH_TODO: REMOVE
+                console.groupEnd();
+                return ({
+                    ...item,
+                    start: getDateForTimezone(new Date(item.start), config.timezone),
+                    end: item.end ? getDateForTimezone(new Date(item.end), config.timezone) : null
+                });
+            })
         },
         applyMiddleware(sagaMiddleware)
     );

@@ -1,0 +1,31 @@
+.scheduleLegend {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    margin: -6px 0 12px -6px;
+}
+
+.item {
+    font-size: 0.8em;
+    margin: 6px 0 0 6px;
+    padding: 6px;
+    flex: 1 0 23%;
+    border-radius: 6px;
+}
+
+.hack {
+    background-color: gold;
+}
+
+.prez {
+    background-color: orange;
+}
+
+.break {
+    background-color: lightgrey;
+}
+
+.other {
+    background-color: lightsteelblue;
+}

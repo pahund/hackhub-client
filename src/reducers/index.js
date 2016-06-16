@@ -9,10 +9,12 @@ import achievements from "./achievements";
 import teams from "./teams";
 import hackers from "./hackers";
 import messages from "./messages";
+import scheduleItems from "./scheduleItems";
 
 export default combineReducers({
     achievements,
     teams,
     hackers,
-    messages
+    messages,
+    scheduleItems
 });

@@ -1,0 +1,53 @@
+.scheduleItem {
+    display: flex;
+    align-items: flex-start;
+    padding: 6px;
+    margin-bottom: 12px;
+}
+
+.time {
+    flex: 0 0 135px;
+    text-align: center;
+    padding: 6px;
+}
+
+.eventsWrapper {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    margin-top: -6px;
+    margin-left: -6px;
+}
+
+.event {
+    border-radius: 6px;
+    padding: 6px;
+    flex: 1 1 45%;
+    margin-top: 6px;
+    margin-left: 6px;
+}
+
+.event1 {
+
+}
+
+.event2 {
+
+}
+
+.break {
+    background-color: lightgrey;
+}
+
+.other {
+    background-color: lightsteelblue;
+}
+
+.prez {
+    background-color: orange;
+}
+
+.hack {
+    background-color: gold;
+}

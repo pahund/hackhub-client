@@ -5,10 +5,10 @@
  * @since 11 Jun 2016
  */
 export default ({ name: name1, score: score1 }, { name: name2, score: score2 }) => {
-    if (score1 < score2) {
+    if (score1 > score2) {
         return 1;
     }
-    if (score1 > score2) {
+    if (score1 < score2) {
         return -1;
     }
     const normalized = {
