@@ -17,5 +17,6 @@ module.exports = {
         "/api" : "http://localhost:8080/api",
     updateInterval: 6000,
     messageDuration: 5000,
+    scheduleUpdateInterval: 30000,
     timezone: 2 // UTC + n (2 => CEST)
 };
