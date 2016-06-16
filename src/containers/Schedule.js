@@ -10,25 +10,24 @@ import { connect } from "react-redux";
 import MainBox from "../components/MainBox";
 import ScheduleItem from "../components/ScheduleItem";
 import ScheduleLegend from "../components/ScheduleLegend";
-import scheduleItemSorter from "../util/scheduleItemSorter";
 
 function renderScheduleItems(items, day) {
-    return items.filter(item => item.start.getDay() === day).map(({ start, end, events }) => (
+    return items.filter(item => item.start.getDay() === day).map(({ start, end, events, status }) => (
         <ScheduleItem key={`schedule-${start}`}
                       start={start}
                       end={end}
                       eventType1={events[0].type}
                       eventDescription1={events[0].description}
                       eventType2={events[1] ? events[1].type : null}
-                      eventDescription2={events[1] ? events[1].description : null} />
+                      eventDescription2={events[1] ? events[1].description : null}
+                      status={status} />
     ));
 }
 
 function Schedule({ scheduleItems }) {
-    const sortedScheduleItems = scheduleItems.sort(scheduleItemSorter);
-    const funEventDay = renderScheduleItems(sortedScheduleItems, 2);
-    const hackDay1 = renderScheduleItems(sortedScheduleItems, 3);
-    const hackDay2 = renderScheduleItems(sortedScheduleItems, 4);
+    const funEventDay = renderScheduleItems(scheduleItems, 2);
+    const hackDay1 = renderScheduleItems(scheduleItems, 3);
+    const hackDay2 = renderScheduleItems(scheduleItems, 4);
     return (
         <MainBox>
             <h1>Schedule</h1>

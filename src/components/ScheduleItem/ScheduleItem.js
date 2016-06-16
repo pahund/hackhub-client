@@ -14,10 +14,11 @@ export default ({
     eventType1,
     eventDescription1,
     eventType2,
-    eventDescription2
+    eventDescription2,
+    status
 }) => {
     return (
-        <Paper className={styles.scheduleItem} style={{
+        <Paper className={`${styles.scheduleItem} ${styles[status]}`} style={{
             borderRadius: "10px"
         }}>
             <div className={styles.time}>

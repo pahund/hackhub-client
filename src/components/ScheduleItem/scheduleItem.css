@@ -51,3 +51,15 @@
 .hack {
     background-color: gold;
 }
+
+.past {
+    opacity: 0.3;
+}
+
+.present {
+    border: 2px solid red;
+}
+
+.future {
+
+}
