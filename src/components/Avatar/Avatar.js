@@ -7,10 +7,10 @@
 import React, { Component, PropTypes } from "react";
 import styles from "./avatar.css";
 
-export default props => {
+export default ({ small, userName }) => {
     return (
-        <div className={styles.avatar}>
-            <img src={`/images/avatars/${props.userName}.jpg`} />
+        <div className={`${styles.avatar} ${small ? styles.small : ""}`}>
+            <img src={`/images/avatars/${userName}.jpg`} />
         </div>
     );
 }

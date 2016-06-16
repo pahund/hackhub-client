@@ -10,14 +10,17 @@ import achievementSorter from "../util/achievementSorter";
 import Team from "../components/Team";
 import MainBox from "../components/MainBox";
 
-function Teams({ teams, achievements }) {
-    const teamsWithPopulatedAchievements = teams.map(team => ({
+function Teams({ teams, achievements, hackers }) {
+    const populatedTeams = teams.map(team => ({
         ...team,
         achievements: team.achievements.map(
             codeName => achievements.find(achievement => achievement.codeName === codeName)
-        ).sort(achievementSorter)
+        ).sort(achievementSorter),
+        hackers: team.hackers.map(
+            userName => hackers.find(hacker => hacker.userName === userName)
+        )
     }));
-    const sortedTeams = teamsWithPopulatedAchievements.sort(({ score: score1, name: name1 }, { score: score2, name: name2 }) => {
+    const sortedTeams = populatedTeams.sort(({ score: score1, name: name1 }, { score: score2, name: name2 }) => {
         if (score1 < score2) {
             return 1;
         }
@@ -48,14 +51,15 @@ function Teams({ teams, achievements }) {
     return (
         <MainBox>
             <h1>Top Teams</h1>
-            {rankedTeams.map(({ name, slackChannel, score, rank, showRank, achievements }) => (
+            {rankedTeams.map(({ name, slackChannel, score, rank, showRank, achievements, hackers }) => (
                 <Team key={`team-leaderboard-${slackChannel}`}
                       rank={rank}
                       showRank={showRank}
                       name={name}
                       slackChannel={slackChannel}
                       achievements={achievements}
-                      score={score} />
+                      score={score}
+                      hackers={hackers} />
             ))}
         </MainBox>
     );
@@ -64,6 +68,7 @@ function Teams({ teams, achievements }) {
 export default connect(
     state => ({
         teams: state.teams,
-        achievements: state.achievements
+        achievements: state.achievements,
+        hackers: state.hackers
     })
 )(Teams);

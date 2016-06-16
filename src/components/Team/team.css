@@ -54,3 +54,24 @@
 
 .achievements {
 }
+
+.hackers {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -6px;
+    margin-left: 75px;
+}
+
+.hacker {
+    display: flex;
+    align-items: center;
+    font-size: 0.8em;
+    margin-right: 18px;
+    margin-top: 6px;
+}
+
+.hacker:last-child {
+    margin-right: 0;
+}
+
+

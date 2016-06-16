@@ -14,4 +14,8 @@ img {
     width: auto;
 }
 
-
+.small {
+    width: 25px;
+    height: 25px;
+    margin-right: 6px;
+}
