@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import achievementSorter from "../util/achievementSorter";
 import Team from "../components/Team";
 import MainBox from "../components/MainBox";
+import prepareTeamHackers from "../util/prepareTeamHackers";
 
 function Teams({ teams, achievements, hackers }) {
     const populatedTeams = teams.map(team => ({
@@ -16,9 +17,7 @@ function Teams({ teams, achievements, hackers }) {
         achievements: team.achievements.map(
             codeName => achievements.find(achievement => achievement.codeName === codeName)
         ).sort(achievementSorter),
-        hackers: team.hackers.map(
-            userName => hackers.find(hacker => hacker.userName === userName)
-        )
+        hackers: prepareTeamHackers(team.hackers, hackers)
     }));
     const sortedTeams = populatedTeams.sort(({ score: score1, name: name1 }, { score: score2, name: name2 }) => {
         if (score1 < score2) {

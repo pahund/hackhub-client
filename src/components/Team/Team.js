@@ -13,6 +13,8 @@ import Stars from "material-ui/svg-icons/action/stars";
 import Star from "material-ui/svg-icons/toggle/star";
 import { grey300, yellowA400, amber800, grey800 } from "material-ui/styles/colors";
 import Avatar from "../Avatar";
+import Submitter from "material-ui/svg-icons/action/lightbulb-outline";
+import SiteOps from "material-ui/svg-icons/action/settings";
 
 export default ({
     slackChannel,
@@ -24,7 +26,9 @@ export default ({
     hackers
 }) => {
     const smallScreen = window.matchMedia("(max-width: 600px)").matches;
-    const renderedAchievements = achievements.map(achievement => getIcon(smallScreen, slackChannel, achievement))
+    const renderedAchievements = achievements.map(achievement => getIcon(smallScreen, slackChannel, achievement));
+    const submitterIcon = <IconWithTooltip size={24} Icon={Submitter} tooltip="Project idea originator" />;
+    const siteOpsIcon = <IconWithTooltip size={24} Icon={SiteOps} tooltip="SiteOps" />;
     return (
         <Paper className={styles.team} style={{
             backgroundImage: `url(/images/team-badges/${slackChannel}.png)`,
@@ -42,10 +46,12 @@ export default ({
             </div>
             {smallScreen ? <div className={styles.secondRow}>{renderedAchievements}</div> : null}
             <div className={styles.hackers}>
-                {hackers.map(({ name, userName }) => (
+                {hackers.map(({ name, userName, isSubmitter, isSiteOps }) => (
                     <div className={styles.hacker} key={`team-hacker-${userName}`}>
                         <Avatar userName={userName} small />
                         <div>{name}</div>
+                        {isSubmitter ? submitterIcon : null}
+                        {isSiteOps ? siteOpsIcon : null}
                     </div>
                 ))}
             </div>

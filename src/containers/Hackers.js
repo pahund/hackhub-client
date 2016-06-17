@@ -9,21 +9,10 @@ import { connect } from "react-redux";
 
 import Hacker from "../components/Hacker";
 import MainBox from "../components/MainBox";
+import hackerSorter from "../util/hackerSorter";
 
 function Hackers({ hackers }) {
-    const sortedHackers = hackers.sort(({ name: name1 }, { name: name2 }) => {
-        const normalized = {
-            name1: name1.toLocaleLowerCase(),
-            name2: name2.toLocaleLowerCase()
-        };
-        if (normalized.name1 > normalized.name2) {
-            return 1;
-        }
-        if (normalized.name1 < normalized.name2) {
-            return -1;
-        }
-        return 0;
-    });
+    const sortedHackers = hackers.sort(hackerSorter);
     return (
         <MainBox>
             <h1>eCG Hackers</h1>
