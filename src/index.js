@@ -67,7 +67,7 @@ if (!Array.prototype.find) {
 console.log(`environment: ${process.env.NODE_ENV}`);
 console.log(`service URL: ${config.serviceUrl}`);
 
-fetchData(config.serviceUrl, "all").then(({ teams, hackers, achievements, scheduleItems }) => {
+fetchData(config.serviceUrl, "all").then(({ teams, hackers, achievements, scheduleItems, topics }) => {
     const store = createStore(
         rootReducer,
         {
@@ -77,7 +77,8 @@ fetchData(config.serviceUrl, "all").then(({ teams, hackers, achievements, schedu
             messages: {
                 achievementUnlocked: null
             },
-            scheduleItems: prepareSchedule(scheduleItems)
+            scheduleItems: prepareSchedule(scheduleItems),
+            topics
         },
         applyMiddleware(sagaMiddleware)
     );

@@ -10,30 +10,18 @@ import achievementSorter from "../util/achievementSorter";
 import Team from "../components/Team";
 import MainBox from "../components/MainBox";
 import prepareTeamHackers from "../util/prepareTeamHackers";
+import teamSorter from "../util/teamSorter";
 
-function Teams({ teams, achievements, hackers }) {
+function Teams({ teams, achievements, hackers, topics }) {
     const populatedTeams = teams.map(team => ({
         ...team,
         achievements: team.achievements.map(
             codeName => achievements.find(achievement => achievement.codeName === codeName)
         ).sort(achievementSorter),
-        hackers: prepareTeamHackers(team.hackers, hackers)
+        hackers: prepareTeamHackers(team.hackers, hackers),
+        topic: topics.find(({ codeName }) => codeName === team.topic)
     }));
-    const sortedTeams = populatedTeams.sort(({ score: score1, name: name1 }, { score: score2, name: name2 }) => {
-        if (score1 < score2) {
-            return 1;
-        }
-        if (score1 > score2) {
-            return -1;
-        }
-        if (name1 > name2) {
-            return 1;
-        }
-        if (name1 < name2) {
-            return -1;
-        }
-        return 0;
-    });
+    const sortedTeams = populatedTeams.sort(teamSorter);
     let rank = 1;
     const rankedTeams = [];
     sortedTeams.forEach((team, index) => {
@@ -50,7 +38,7 @@ function Teams({ teams, achievements, hackers }) {
     return (
         <MainBox>
             <h1>Top Teams</h1>
-            {rankedTeams.map(({ name, slackChannel, score, rank, showRank, achievements, hackers }) => (
+            {rankedTeams.map(({ name, slackChannel, score, rank, showRank, achievements, hackers, topic }) => (
                 <Team key={`team-leaderboard-${slackChannel}`}
                       rank={rank}
                       showRank={showRank}
@@ -58,7 +46,8 @@ function Teams({ teams, achievements, hackers }) {
                       slackChannel={slackChannel}
                       achievements={achievements}
                       score={score}
-                      hackers={hackers} />
+                      hackers={hackers}
+                      topic={topic} />
             ))}
         </MainBox>
     );
@@ -68,6 +57,7 @@ export default connect(
     state => ({
         teams: state.teams,
         achievements: state.achievements,
-        hackers: state.hackers
+        hackers: state.hackers,
+        topics: state.topics
     })
 )(Teams);

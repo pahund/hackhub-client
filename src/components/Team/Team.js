@@ -23,7 +23,8 @@ export default ({
     score,
     name,
     achievements,
-    hackers
+    hackers,
+    topic
 }) => {
     const smallScreen = window.matchMedia("(max-width: 600px)").matches;
     const renderedAchievements = achievements.map(achievement => getIcon(smallScreen, slackChannel, achievement));
@@ -45,6 +46,7 @@ export default ({
                 {smallScreen ? null : <div className={styles.achievements}>{renderedAchievements}</div>}
             </div>
             {smallScreen ? <div className={styles.secondRow}>{renderedAchievements}</div> : null}
+            <div className={styles.topic}>Working on: {topic.name} – {topic.description}</div>
             <div className={styles.hackers}>
                 {hackers.map(({ name, userName, isSubmitter, isSiteOps }) => (
                     <div className={styles.hacker} key={`team-hacker-${userName}`}>

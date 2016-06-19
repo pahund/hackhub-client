@@ -10,11 +10,13 @@ import teams from "./teams";
 import hackers from "./hackers";
 import messages from "./messages";
 import scheduleItems from "./scheduleItems";
+import topics from "./topics";
 
 export default combineReducers({
     achievements,
     teams,
     hackers,
     messages,
-    scheduleItems
+    scheduleItems,
+    topics
 });

@@ -60,7 +60,7 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: -6px;
-    margin-left: 75px;
+    margin-left: 48px;
 }
 
 .hacker {
@@ -75,5 +75,10 @@
     margin-right: 0;
 }
 
+.topic {
+    font-size: 0.8em;
+    font-style: italic;
+    margin-left: 48px;
+}
 
 
