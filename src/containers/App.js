@@ -52,20 +52,34 @@ class App extends Component {
                 {achievementUnlocked !== null ? (
                     <Dialog title="Achievement unlocked!"
                             modal={false}
+                            titleStyle={{
+                                backgroundRepeat: "no-repeat",
+                                backgroundPosition: "top right",
+                                backgroundImage: `url(/images/team-badges/${achievementUnlocked.team.slackChannel}.png)`,
+                                textShadow: "0 0 0.2em white, 0 0 0.2em white, 0 0 0.2em white, 0 0 0.2em white, 0 0 0.2em white, 0 0 0.2em white",
+                                fontWeight: "bold",
+                                textAlign: "right",
+                                paddingTop: "10px"
+                            }}
                             open>
                         <p>
                             Team <strong>{achievementUnlocked.team.name}</strong>{nbsp}
-                            has just unlocked achievement{nbsp}
-                            <strong>{achievementUnlocked.achievement.name}:</strong>
+                            has just unlocked achievement:{nbsp}
                         </p>
-                        <p>
-                            <em>{achievementUnlocked.achievement.description}</em>
+                        <h2 style={{
+                            margin: "20px 50px 10px 50px"
+                        }}>{achievementUnlocked.achievement.name}</h2>
+                        <p style={{
+                            margin: "10px 50px 20px 50px",
+                            fontSize: "1.2em"
+                        }}>
+                            {achievementUnlocked.achievement.description}
                         </p>
                         <p>
                             Score: <strong>{achievementUnlocked.achievement.score} points</strong>
                         </p>
                         <p>
-                            Congratulations – you are awesome!
+                            <em>Congratulations – you are awesome!</em>
                         </p>
                     </Dialog>
                 ) : null}
