@@ -27,7 +27,7 @@ export default ({
 }) => {
     const smallScreen = window.matchMedia("(max-width: 600px)").matches;
     const renderedAchievements = achievements.map(achievement => getIcon(smallScreen, slackChannel, achievement));
-    const submitterIcon = <IconWithTooltip size={24} Icon={Submitter} tooltip="Project idea originator" />;
+    const submitterIcon = <IconWithTooltip size={24} Icon={Submitter} tooltip="Topic Owner" />;
     const siteOpsIcon = <IconWithTooltip size={24} Icon={SiteOps} tooltip="SiteOps" />;
     return (
         <Paper className={styles.team} style={{

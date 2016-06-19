@@ -16,11 +16,13 @@ function Hackers({ hackers }) {
     return (
         <MainBox>
             <h1>eCG Hackers</h1>
-            {sortedHackers.map(({ name, userName, description, score, rank, showRank }) => (
+            {sortedHackers.map(({ name, userName, description, isSubmitter, isSiteOps }) => (
                 <Hacker key={`hacker-${userName}`}
-                                 name={name}
-                                 userName={userName}
-                                 description={description} />
+                        name={name}
+                        userName={userName}
+                        description={description}
+                        isSubmitter={isSubmitter}
+                        isSiteOps={isSiteOps} />
             ))}
         </MainBox>
     );
