@@ -14,7 +14,7 @@ function MainMenu({ items, current, onLogoClick }) {
         <Tabs value={current}
               className={styles.menu}>
             {items.map((item, index) =>
-                <Tab className={styles.menuItem} 
+                <Tab className={styles.menuItem}
                      style={{ padding: "0 6px 0 6px" }}
                      label={item.label}
                      onActive={item.onActive}
@@ -42,7 +42,7 @@ function MainMenu({ items, current, onLogoClick }) {
         </IconMenu>
     );
     return (
-        <AppBar title={largeScreen ? "eBay Classifieds Group Tech Hack 2016" : "eCG Tech Hack 2016"}
+        <AppBar title={largeScreen ? "eBay Classifieds Group TechHack 2016" : "eCG TechHack 2016"}
                 iconElementLeft={logo}
                 style={{ paddingRight: "8px", backgroundColor: "#000000" }}>
             {smallScreen ? smallScreenMenu : largeScreenMenu}

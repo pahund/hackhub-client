@@ -10,6 +10,7 @@ import { connect } from "react-redux";
 import MainBox from "../components/MainBox";
 import ScheduleItem from "../components/ScheduleItem";
 import ScheduleLegend from "../components/ScheduleLegend";
+import isPast from "../util/isPast";
 
 function renderScheduleItems(items, day) {
     return items.filter(item => item.start.getDay() === day).map(({ start, end, events, status }) => (
@@ -32,13 +33,27 @@ function Schedule({ scheduleItems }) {
         <MainBox>
             <h1>Schedule</h1>
             <ScheduleLegend />
-            <h2>Tuesday, 21 June 2016</h2>
-            {funEventDay}
-            <h2>Wednesday, 22 June 2016</h2>
-            {hackDay1}
-            <h2>Thursday, 23 June 2016</h2>
-            {hackDay2}
-            <p><small><em>All times are in Berlin's timezone: Central European Summer Time (CEST)</em></small></p>
+            {isPast("2016-06-21") ? null : (
+                <div>
+                    <h2>Tuesday, 21 June 2016</h2>
+                    {funEventDay}
+                </div>
+            )}
+            {isPast("2016-06-22") ? null : (
+                <div>
+                    <h2>Wednesday, 22 June 2016</h2>
+                    {hackDay1}
+                </div>
+            )}
+            {isPast("2016-06-23") ? (
+                <div><em>Nothing to see here, TechHack is over…</em></div>
+            ) : (
+                <div>
+                    <h2>Thursday, 23 June 2016</h2>
+                    {hackDay2}
+                    <p><small><em>All times are in Berlin's timezone: Central European Summer Time (CEST)</em></small></p>
+                </div>
+            )}
         </MainBox>
     );
 }
