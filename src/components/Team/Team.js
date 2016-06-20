@@ -46,7 +46,7 @@ export default ({
                 {smallScreen ? null : <div className={styles.achievements}>{renderedAchievements}</div>}
             </div>
             {smallScreen ? <div className={styles.secondRow}>{renderedAchievements}</div> : null}
-            <div className={styles.topic}>Working on: {topic.name} – {topic.description}</div>
+            <div className={styles.topic}>Working on: <a href={topic.wikiUrl}>{topic.name}</a> – {topic.description}</div>
             <div className={styles.hackers}>
                 {hackers.map(({ name, userName, isSubmitter, isSiteOps }) => (
                     <div className={styles.hacker} key={`team-hacker-${userName}`}>
