@@ -11,6 +11,7 @@ import Avatar from "../Avatar";
 import IconWithTooltip from "../IconWithTooltip";
 import Submitter from "material-ui/svg-icons/action/lightbulb-outline";
 import SiteOps from "material-ui/svg-icons/action/settings";
+import Slack from "../icons/Slack";
 
 export default ({
     userName,
@@ -29,7 +30,14 @@ export default ({
             <div>
                 <strong>{name}</strong>
                 {description ? <br /> : null}
-                {description}
+                {description || null}
+                <br />
+                <IconWithTooltip size={15}
+                                 style={{ marginRight: "5px" }}
+                                 Icon={Slack}
+                                 tooltip="Slack"
+                                 tooltipPosition="top-center" />
+                <a href={`https://ebayclassifiedsgroup.slack.com/team/${userName}`}>{userName}</a>
             </div>
         </div>
         {isSubmitter || isSiteOps ? (

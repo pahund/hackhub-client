@@ -9,6 +9,8 @@ import MainBox from "../components/MainBox";
 import Achievement from "../components/Achievement";
 import { connect } from "react-redux";
 import achievementSorter from "../util/achievementSorter";
+import IconWithTooltip from "../components/IconWithTooltip";
+import Slack from "../components/icons/Slack";
 
 function Achievements({ achievements, teams }) {
     const achievementsWithPopulatedTeams = achievements.map(achievement => ({
@@ -21,7 +23,7 @@ function Achievements({ achievements, teams }) {
     return (
         <MainBox>
             <h1>Achievements</h1>
-            <h2>Gold, Silver and Bronze – each is awarded to one team only:</h2>
+            <h2>Gold, Silver and Bronze – each is awarded to one team only</h2>
             {primaryAchievements.map(({ name, codeName, description, score, available, teams }) => (
                 <Achievement key={`achievement-${codeName}`}
                              name={name}
@@ -30,7 +32,16 @@ function Achievements({ achievements, teams }) {
                              available={available}
                              teams={teams} />
             ))}
-            <h2>Bonus Achievements – can be awarded to multiple teams:</h2>
+            <h2>Bonus Achievements – can be awarded to multiple teams</h2>
+            <p>
+                To claim an achievement for your team, post a message in Slack:
+                <IconWithTooltip size={15}
+                                 style={{ margin: "0 5px" }}
+                                 Icon={Slack}
+                                 tooltip="Slack"
+                                 tooltipPosition="top-center" />
+                <a href="https://ebayclassifiedsgroup.slack.com/messages/ecg-tech-hack-2016/">ecg-tech-hack-2016</a>
+            </p>
             {secondaryAchievements.map(({ name, codeName, description, score, available, teams }) => (
                 <Achievement key={`achievement-${codeName}`}
                              name={name}
