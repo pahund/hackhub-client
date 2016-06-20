@@ -19,8 +19,10 @@ function renderScheduleItems(items, day) {
                       end={end}
                       eventType1={events[0].type}
                       eventDescription1={events[0].description}
+                      eventLocation1={events[0].location}
                       eventType2={events[1] ? events[1].type : null}
                       eventDescription2={events[1] ? events[1].description : null}
+                      eventLocation2={events[1] ? events[1].location : null}
                       status={status} />
     ));
 }

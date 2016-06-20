@@ -28,12 +28,10 @@
     margin-left: 6px;
 }
 
-.event1 {
-
-}
-
-.event2 {
-
+.location {
+    margin-top: 10px;
+    display: flex;
+    align-items: flex-start;
 }
 
 .break {

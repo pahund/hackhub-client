@@ -7,16 +7,21 @@
 import React, { Component, PropTypes } from "react";
 import styles from "./scheduleItem.css";
 import Paper from "material-ui/Paper";
+import Location from "material-ui/svg-icons/communication/location-on";
 
 export default ({
     start,
     end,
     eventType1,
     eventDescription1,
+    eventLocation1,
     eventType2,
     eventDescription2,
+    eventLocation2,
     status
 }) => {
+    const event1 = renderEvent(eventType1, eventDescription1, eventLocation1);
+    const event2 = renderEvent(eventType2, eventDescription2, eventLocation2);
     return (
         <Paper className={`${styles.scheduleItem} ${styles[status]}`} style={{
             borderRadius: "10px"
@@ -26,20 +31,24 @@ export default ({
                 {formatDate(start)} {end ? ` – ${formatDate(end)}` : null}
             </div>
             <div className={styles.eventsWrapper}>
-                <div className={`${styles.event} ${styles.event1} ${styles[eventType1]}`}>
-                    {eventDescription1}
-                </div>
-                {
-                    eventType2 ? (
-                        <div className={`${styles.event} ${styles.event2} ${styles[eventType2]}`}>
-                            {eventDescription2}
-                        </div>
-                    ) : null
-                }
+                {event1}
+                {eventType2 ? event2 : null}
             </div>
         </Paper>
     );
 }
+
+const renderEvent = (eventType, eventDescription, eventLocation) => (
+    <div className={`${styles.event} ${styles[eventType]}`}>
+        <div dangerouslySetInnerHTML={{__html: eventDescription}} />
+        {eventLocation ? (
+            <div className={styles.location}>
+                <a href={eventLocation.mapUrl}><Location /></a>
+                <div dangerouslySetInnerHTML={{__html: eventLocation.description}} />
+            </div>
+        ) : null}
+    </div>
+);
 
 function formatDate(date) {
     return `${zeroPad(date.getHours())}:${zeroPad(date.getMinutes())}`;
