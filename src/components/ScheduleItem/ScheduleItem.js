@@ -8,6 +8,7 @@ import React, { Component, PropTypes } from "react";
 import styles from "./scheduleItem.css";
 import Paper from "material-ui/Paper";
 import Location from "material-ui/svg-icons/communication/location-on";
+import Warning from "material-ui/svg-icons/alert/warning";
 
 export default ({
     start,
@@ -27,7 +28,6 @@ export default ({
             borderRadius: "10px"
         }}>
             <div className={styles.time}>
-                {!end ? "from " : null}
                 {formatDate(start)} {end ? ` – ${formatDate(end)}` : null}
             </div>
             <div className={styles.eventsWrapper}>
@@ -42,9 +42,18 @@ const renderEvent = (eventType, eventDescription, eventLocation) => (
     <div className={`${styles.event} ${styles[eventType]}`}>
         <div dangerouslySetInnerHTML={{__html: eventDescription}} />
         {eventLocation ? (
-            <div className={styles.location}>
-                <a href={eventLocation.mapUrl}><Location /></a>
-                <div dangerouslySetInnerHTML={{__html: eventLocation.description}} />
+            <div>
+                {eventLocation.alert ? (
+                    <div className={styles.alert}>
+                        <Warning />
+                        <div dangerouslySetInnerHTML={{__html: eventLocation.alert}} />
+                    </div>
+
+                ) : null}
+                <div className={styles.location}>
+                    <a href={eventLocation.mapUrl}><Location /></a>
+                    <div dangerouslySetInnerHTML={{__html: eventLocation.description}} />
+                </div>
             </div>
         ) : null}
     </div>
