@@ -32,6 +32,7 @@ import fetchScheduleAction from "./actions/fetchSchedule";
 import updateLeaderboardsSaga from "./sagas/updateLeaderboards";
 import updateScheduleSaga from "./sagas/updateSchedule";
 import prepareSchedule from "./util/prepareSchedule";
+import player from "./audio/player";
 
 const container = document.getElementById("app");
 const sagaMiddleware = createSagaMiddleware();
@@ -68,6 +69,9 @@ console.log(`environment: ${process.env.NODE_ENV}`);
 console.log(`service URL: ${config.serviceUrl}`);
 
 fetchData(config.serviceUrl, "all").then(({ teams, hackers, achievements, scheduleItems, topics }) => {
+    const sounds = [];
+    teams.forEach(({ slackChannel }) => sounds.push({ id: slackChannel, path: `/sounds/${slackChannel}.ogg`}));
+    player.load(sounds);
     const store = createStore(
         rootReducer,
         {

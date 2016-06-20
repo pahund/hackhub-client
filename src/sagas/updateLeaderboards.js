@@ -13,6 +13,7 @@ import updateAchievements from "../actions/updateAchievements";
 import showAchievementMessage from "../actions/showAchievementMessage";
 import hideAchievementMessage from "../actions/hideAchievementMessage";
 import { delay } from "redux-saga";
+import player from "../audio/player";
 
 export function *updateLeaderboards(getState) {
     const { teams, achievements } = yield call(fetchData, config.serviceUrl, "update");
@@ -41,6 +42,7 @@ export function *updateLeaderboards(getState) {
         return;
     }
     for (const { team, achievement } of achievementMessages) {
+        player.play(team.slackChannel);
         yield put(showAchievementMessage(team, achievement));
         yield call(delay, config.messageDuration);
         yield put(hideAchievementMessage());
