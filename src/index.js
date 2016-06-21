@@ -21,6 +21,7 @@ import { Router, Route, browserHistory, IndexRoute } from "react-router";
 
 import App from "./containers/App";
 import Teams from "./containers/Teams";
+import TeamsWall from "./containers/TeamsWall";
 import Hackers from "./containers/Hackers";
 import Achievements from "./containers/Achievements";
 import Schedule from "./containers/Schedule";
@@ -95,6 +96,7 @@ fetchData(config.serviceUrl, "all").then(({ teams, hackers, achievements, schedu
                     <Route path="/" component={App}>
                         <IndexRoute component={Teams} />
                         <Route path="/teams" component={Teams} />
+                        <Route path="/teams/wall" component={TeamsWall} />
                         <Route path="/hackers" component={Hackers} />
                         <Route path="/achievements" component={Achievements} />
                         <Route path="/schedule" component={Schedule} />
