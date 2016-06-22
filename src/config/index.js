@@ -13,9 +13,8 @@ module.exports = {
     prod: process.env.NODE_ENV === "prod",
     dev: process.env.NODE_ENV === "development",
     devServerPort: process.env.NODE_PORT || 3000,
-    serviceUrl: process.env.NODE_ENV === "production" ?
-        "/api" : "http://localhost:8080/api",
-    updateInterval: 6000,
+    serviceUrl: process.env.NODE_ENV === "production" ? "/api" : "http://localhost:8080/api",
+    updateInterval: 10000,
     messageDuration: 5000,
     scheduleUpdateInterval: 30000,
     timezone: 2 // UTC + n (2 => CEST)
